@@ -4,11 +4,12 @@ using System.Threading.Tasks;
 
 namespace Zintom.SocketExtensions
 {
+
     /// <summary>
     /// A wrapper around <see cref="System.Net.Sockets.Socket"/> which provides a way to send data back and forth
     /// in a length-prefixed and async manner.
     /// </summary>
-    public class LengthPrefixedSocket
+    public class LengthPrefixedSocket : ISendReceiveAsync
     {
 
         /// <summary>
@@ -42,6 +43,9 @@ namespace Zintom.SocketExtensions
 
         private readonly Socket _socket;
 
+        /// <summary>
+        /// The underlying socket which represents this connection.
+        /// </summary>
         public Socket Socket { get => _socket; }
 
         public LengthPrefixedSocket(Socket underlyingSocket)
@@ -60,6 +64,12 @@ namespace Zintom.SocketExtensions
             return new LengthPrefixedSocket(underlyingSocket);
         }
         #endregion
+
+        /// <inheritdoc cref="SendAsync(byte[], SocketFlags)"/>
+        public Task<int> SendAsync(byte[] buffer)
+        {
+            return SendAsync(buffer, SocketFlags.None);
+        }
 
         /// <summary>
         /// Sends data to the socket in a length prefixed manner.
@@ -91,13 +101,19 @@ namespace Zintom.SocketExtensions
             return tcs.Task;
         }
 
+        /// <inheritdoc cref="ReceiveNextAsync(SocketFlags)"/>
+        public Task<byte[]> ReceiveNextAsync()
+        {
+            return ReceiveNextAsync(SocketFlags.None);
+        }
+
         /// <summary>
         /// Receives the next piece of data from the socket.
         /// </summary>
         /// <param name="socketFlags"></param>
         /// <remarks><b>Warning:</b> Never use the base <see cref="System.Net.Sockets.Socket"/> Send/Receive methods
         /// in conjunction with this class as they can corrupt the state.</remarks>
-        /// <returns>The next piece of full data sent by the external peer.</returns>
+        /// <returns>The next piece of full data sent by the peer.</returns>
         public Task<byte[]> ReceiveNextAsync(SocketFlags socketFlags)
         {
             // Receieve 4 bytes (int), which will tell us the length prefix of the next piece of data to download.
@@ -149,5 +165,6 @@ namespace Zintom.SocketExtensions
             try { state.TaskCompletionSource.TrySetResult(state.DataBuffer); }
             catch (Exception e) { state.TaskCompletionSource.TrySetException(e); }
         }
+
     }
 }
