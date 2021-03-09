@@ -9,6 +9,11 @@ namespace Zintom.SocketExtensions
     {
 
         /// <summary>
+        /// Whether the transport layer is connected.
+        /// </summary>
+        public bool Connected { get; }
+
+        /// <summary>
         /// Send the given <paramref name="buffer"/> of data to the peer.
         /// </summary>
         /// <param name="buffer">The data to be sent.</param>

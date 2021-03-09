@@ -46,7 +46,9 @@ namespace Zintom.SocketExtensions
         /// <summary>
         /// The underlying socket which represents this connection.
         /// </summary>
-        public Socket Socket { get => _socket; }
+        public Socket Socket => _socket;
+
+        public bool Connected => _socket.Connected;
 
         public LengthPrefixedSocket(Socket underlyingSocket)
         {
@@ -165,6 +167,5 @@ namespace Zintom.SocketExtensions
             try { state.TaskCompletionSource.TrySetResult(state.DataBuffer); }
             catch (Exception e) { state.TaskCompletionSource.TrySetException(e); }
         }
-
     }
 }

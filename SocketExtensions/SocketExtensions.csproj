@@ -15,8 +15,8 @@
     <RepositoryUrl>https://github.com/Zintom/SocketExtensions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.1.0</Version>
-    <PackageReleaseNotes>Gives access to the ISendReceiveAsync interface which allows calling code to mock out connections without actually using sockets or other types of connection. LengthPrefixedSocket implements ISendReceiveAsync.</PackageReleaseNotes>
+    <Version>1.1.1</Version>
+    <PackageReleaseNotes>Extended the ISendReceiveAsync interface.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
