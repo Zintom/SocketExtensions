@@ -19,19 +19,19 @@ namespace Zintom.SocketExtensions
             /// <summary>
             /// The TCS which represents the completion of this receive operation.
             /// </summary>
-            internal TaskCompletionSource<byte[]> TaskCompletionSource;
+            public TaskCompletionSource<byte[]> TaskCompletionSource;
 
-            internal SocketFlags SocketFlags;
+            public SocketFlags SocketFlags;
 
             /// <summary>
             /// The buffer used to receive data into (could be the length prefix or the final data).
             /// </summary>
-            internal byte[] DataBuffer;
+            public byte[] DataBuffer;
 
             /// <summary>
             /// The number of bytes read into DataBuffer so far.
             /// </summary>
-            internal int BytesRead;
+            public int BytesRead;
 
             public ReceiveState(TaskCompletionSource<byte[]> taskCompletionSource, byte[] dataBuffer)
             {
