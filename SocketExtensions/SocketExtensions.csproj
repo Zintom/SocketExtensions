@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Authors>Zintom</Authors>
+    <Company />
+    <Description>A wrapper around the .NET Socket class which provides extra functionality such as length-prefixed send/receive, and Task based overloads for common functions.</Description>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Zintom.SocketExtensions</RootNamespace>
+    <PackageProjectUrl>https://github.com/Zintom/SocketExtensions</PackageProjectUrl>
+    <Copyright>Zintom 2021</Copyright>
+    <PackageTags>Socket, .NET, Sockets, Networking</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <RepositoryUrl>https://github.com/Zintom/SocketExtensions</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
