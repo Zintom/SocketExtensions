@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 namespace Zintom.SocketExtensions
 {
 
+    [Obsolete("Unless you really want to use tasks, favour the BetterSocketExtensions")]
     /// <summary>
     /// A wrapper around <see cref="System.Net.Sockets.Socket"/> which provides a way to send data back and forth
     /// in a length-prefixed and async manner.

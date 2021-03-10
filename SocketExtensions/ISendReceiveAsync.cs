@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace Zintom.SocketExtensions
 {
+    [Obsolete("Unless you really want to use tasks, favour the BetterSocketExtensions")]
     /// <summary>
     /// A class which can send and receive <see cref="byte"/>'s to and from peers.
     /// </summary>
